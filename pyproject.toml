@@ -1,7 +1,7 @@
 [project]
 name = "geometryawaremcts"
 version = "0.1.0"
-description = "Add your description here"
+description = "Geometry-aware Monte Carlo tree search for extremal problems in combinatorial geometry."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

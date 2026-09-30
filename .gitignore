@@ -1,0 +1,14 @@
+# Local virtual environment
+.venv/
+
+# Python and Numba caches
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+
+# Generated experiment outputs
+/outputs/
+
+# macOS metadata
+.DS_Store
