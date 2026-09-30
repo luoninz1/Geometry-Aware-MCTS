@@ -1,0 +1,44 @@
+# =============================================================================
+# GeometryAwareMCTS Configuration
+# =============================================================================
+
+# --- Experiment Range ---
+start: 20             # Starting value of n (inclusive)
+end: 21               # Ending value of n (exclusive)
+step: 5               # Step size for n values
+repeat: 1             # Number of runs for each n value
+
+# --- Environment & Algorithm ---
+environment: "N3il_with_symmetry_and_symmetric_actions"  # Environment name
+algorithm: "MCTS_Tree_Reuse"                             # Algorithm name
+reward: "exp_reverse"                                     # Options: default, exp_reverse, exp_growth, linear, gaussian, optimal_3x3
+
+# --- MCTS Configuration ---
+# Available symmetric_action options: 
+# None, rotation_180, horizontal_flip, vertical_flip, diagonal_flip, anti_diagonal_flip,
+# rotation_90_then_rotation_180, vertical_flip_then_horizontal_flip, 
+# diagonal_flip_then_anti_diagonal_flip, vertical_flip_then_horizontal_flip_then_diagonal_flip
+symmetric_action: "vertical_flip_then_horizontal_flip_then_diagonal_flip" 
+node_compression: true 
+C: 1.41                                 # Exploration constant (e.g. sqrt(2))
+
+# Supported as either an integer or an evaluatable Python string function relative to `n`
+num_searches: "100*(n**2)"              # Number of searches (e.g., 1000 or "100*(n**2)")
+
+virtual_loss: 1.0                       # Magnitude to subtract at reservation
+simulate_with_priority: false           # Simulate with priority (Legacy option, may not be supported in all environments)
+
+# --- Execution & Display ---
+num_workers: 1                          # Number of workers for parallel processing (1: No parallelization; Legacy option, may not be supported in all environments)
+process_bar: false                      # Enable progress bar
+display_state: true                     # Display the state during execution
+tree_visualization: false               # Enable rendering tree visualization
+pause_at_each_step: false               # Pause interactive prompts for automation tests
+
+# --- Logging & Saving ---
+save_optimal_terminal_state: true       # Save optimal terminal states found
+logging_mode: true                      # Enable logging mode to get return value
+light_log: false                         # Enable light logging mode to reduce overhead
+output_dir: null                        # Directory to save results. If null, uses outputs/<example-name>/.
+random_seed: null                       # Random seed for reproducibility. If null, uses loop index.
+continue_from_existing_state: null      # Path to existing state to load for continuation. If null, start from scratch.
